@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日曆</title>
+    <style>
+        body {
+        margin: 0;
+    }
+
+    nav{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        /* padding-left: 200px; */
+    }
+
+    li {
+        display: inline-block;
+        /* float: left; */
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    .active {
+        background-color: orange;
+    }
+
+        .begins {
+            text-align: center;
+        }
+
+        .title {
+            margin: auto;
+            width: 50px;
+            background-color: orange;
+            border-radius: 10px;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        table {
+            margin: auto;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        thead td {
+            padding: 20px;
+            background-color: orange;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        tbody td {
+            padding: 20px;
+            background-color: lightgray;
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="homework01.html">HW1</a></li>
+            <li><a href="homework02.html">HW2</a></li>
+            <li><a href="homework03.html">HW3</a></li>
+            <li><a href="homework04.html">HW4</a></li>
+            <li><a class="active" href="homework05.html">HW5</a></li>
+            <li><a href="homework06.html">HW6</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="begins">
+        <p class="title">月曆</p>
+        <span style="font-weight: bold;font-size: 25px;">Welcome</span><br>
+        <select id="year">
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+        </select>
+        <span>年</span>
+        <select id="month">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <span>月</span>
+        <select id="day">
+        </select>
+        <span>日</span>
+    </div>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <td>Sun</td>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+            </tr>
+        </thead>
+        <tbody id="calendar">
+
+        </tbody>
+    </table>
+    <br>
+    <p id="result"></p>
+    <script>
+        function isLeapYear(year) {
+            if (year % 400 == 0) return true;
+            else if (year % 100 == 0) return false;
+            else if (year % 4 == 0) return true;
+            return false;
+        }
+        function getDays(year, month) {
+            switch (month) {
+                case "1": {
+                    return 31;
+                }
+                case "3": {
+                    return 31;
+                }
+                case "4": {
+                    return 30;
+                }
+                case "5": {
+                    return 31;
+                }
+                case "6": {
+                    return 30;
+                }
+                case "7": {
+                    return 31;
+                }
+                case "8": {
+                    return 31;
+                }
+                case "9": {
+                    return 30;
+                }
+                case "10": {
+                    return 31;
+                }
+                case "11": {
+                    return 30;
+                }
+                case "12": {
+                    return 31;
+                }
+                case '2': {
+                    if (isLeapYear(parseInt(year))) {
+                        return 29;
+                    }
+                    else {
+                        return 28;
+                    }
+                }
+            }
+        }
+
+        document.getElementById("year").addEventListener("change", updateDays);
+        document.getElementById("month").addEventListener("change", updateDays);
+        document.getElementById("day").addEventListener("change", updateCalendar);
+
+        function updateDays() {
+            let year = document.getElementById("year").value;
+            let month = document.getElementById("month").value;
+            let day = document.getElementById("day");
+
+            // 寫出日
+            let str = "";
+            for (let i = 1; i <= getDays(year, month); i++) {
+                str += "<option value=\"" + i + "\">" + i + "</option>";
+            }
+            day.innerHTML = str;
+
+            updateCalendar();
+        }
+
+        function getFirstDay(year, month) {
+            let temp_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,]; // 月份的天數
+            let i, temp_year, days, last;
+            let week = ['日', '一', '二', '三', '四', '五', '六'];
+            // ---------輸入--------------
+            day = 1;
+            // ---------判斷是否為閏年及計算總天數----------------------------
+            temp_year = year - 1;
+            days = 365 * temp_year + Math.floor(temp_year / 4) - Math.floor(temp_year / 100) + Math.floor(temp_year / 400);
+            if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))) // 判斷該年是否為閏年，若是閏年則將該年2月的日期改為29天
+                temp_month[1] = 29;
+
+            for (i = 0; i < (month - 1); i++) // 算總天數
+                days = days + temp_month[i];
+            days = days + day;
+            last = days % 7;
+            return last;
+        }
+
+        function updateCalendar() {
+            let year = document.getElementById("year").value;
+            let month = document.getElementById("month").value;
+            let day = document.getElementById("day").value;
+            let calendar = document.getElementById("calendar");
+
+            let count = 0;
+            if (month == 2) {
+                if (isLeapYear(year)) count = 28;
+                else count = 29;
+            }
+            else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                count = 31;
+            }
+            else if (month == 4 || month == 6 || month == 9 || month == 11) {
+                count = 30;
+            }
+
+            let last = getFirstDay(parseInt(year), parseInt(month));
+            // 輸出日曆
+            if (last == 0) {
+                calendar.innerHTML = "";
+                for (let j = 1; j <= count; j++) {
+                    if ((j - 1) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 1) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if (j % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 2) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if ((j + 1) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 3) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if ((j + 2) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 4) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if ((j + 3) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 5) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if ((j + 4) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+            else if (last == 6) {
+                calendar.innerHTML = "";
+                calendar.appendChild(document.createElement("tr"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                calendar.appendChild(document.createElement("td"));
+                for (let j = 1; j <= count; j++) {
+                    if ((j + 5) % 7 == 0) calendar.appendChild(document.createElement("tr"));
+                    let temp = document.createElement("td");
+                    temp.setAttribute("id",j);
+                    temp.innerHTML = j;
+                    calendar.appendChild(temp);
+                }
+            }
+
+            let change = document.getElementById(day);
+            console.log(typeof(change));
+            console.log(change);
+            change.setAttribute("style", "background-color: orange;");
+
+            let result = document.getElementById("result");
+            result.innerHTML = "您選擇的日期是" + year + "年" + month + "月" + day + "日";
+        }
+
+    </script>
+</body>
+
+</html>

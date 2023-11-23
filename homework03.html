@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星星替換</title>
+    <style>
+        body {
+        margin: 0;
+    }
+
+    nav{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        /* padding-left: 200px; */
+    }
+
+    li {
+        display: inline-block;
+        /* float: left; */
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    .active {
+        background-color: orange;
+    }
+
+        .stars {
+            text-align: center;
+            margin: auto;
+            background-color: orange;
+            width: 50%;
+        }
+
+        .rate{
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #mark{
+            color: orange;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="homework01.html">HW1</a></li>
+            <li><a href="homework02.html">HW2</a></li>
+            <li><a class="active" href="homework03.html">HW3</a></li>
+            <li><a href="homework04.html">HW4</a></li>
+            <li><a href="homework05.html">HW5</a></li>
+            <li><a href="homework06.html">HW6</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="stars">
+        <img id="star1" src="images/star.gif">
+        <img id="star2" src="images/star.gif">
+        <img id="star3" src="images/star.gif">
+        <img id="star4" src="images/star.gif">
+        <img id="star5" src="images/star.gif">
+    </div>
+    <div class="rate">
+        <p>單擊星星可評分‧雙擊星星重置</p>
+        <P>請評分 <span id="mark"></span></P>
+    </div>
+    
+    <script>
+        function mouseover1(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="1分";
+        }
+        function mouseout1(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        }
+        document.getElementById("star1").addEventListener("mouseover", mouseover1);
+        document.getElementById("star1").addEventListener("mouseout", mouseout1);
+        function mouseover2(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="2分";
+        }
+        function mouseout2(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        }
+        document.getElementById("star2").addEventListener("mouseover", mouseover2);
+        document.getElementById("star2").addEventListener("mouseout", mouseout2);
+        function mouseover3(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="3分";
+        }
+        function mouseout3(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        }
+        document.getElementById("star3").addEventListener("mouseover", mouseover3);
+        document.getElementById("star3").addEventListener("mouseout", mouseout3);
+        function mouseover4(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("star4").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="4分";
+        }
+        function mouseout4(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        }
+        document.getElementById("star4").addEventListener("mouseover", mouseover4);
+        document.getElementById("star4").addEventListener("mouseout", mouseout4);
+        function mouseover5(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("star4").src = "images/chngstar.gif";
+            document.getElementById("star5").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="5分";
+        }
+        function mouseout5(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        }
+        document.getElementById("star5").addEventListener("mouseover", mouseover5);
+        document.getElementById("star5").addEventListener("mouseout", mouseout5);
+
+        document.getElementById("star1").addEventListener("dblclick",function(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        });
+        document.getElementById("star2").addEventListener("dblclick",function(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        });
+        document.getElementById("star3").addEventListener("dblclick",function(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        });
+        document.getElementById("star4").addEventListener("dblclick",function(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        });
+        document.getElementById("star5").addEventListener("dblclick",function(){
+            document.getElementById("star1").src = "images/star.gif";
+            document.getElementById("star2").src = "images/star.gif";
+            document.getElementById("star3").src = "images/star.gif";
+            document.getElementById("star4").src = "images/star.gif";
+            document.getElementById("star5").src = "images/star.gif";
+            document.getElementById("mark").innerHTML="";
+        });
+
+        document.getElementById("star1").addEventListener("click", function(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="1分";
+            document.getElementById("star1").removeEventListener("mouseout", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseout", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseout", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseout", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseout", mouseout5);
+            
+            document.getElementById("star1").removeEventListener("mouseover", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseover", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseover", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseover", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseover", mouseout5);
+        });
+        document.getElementById("star2").addEventListener("click", function(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="2分";
+            document.getElementById("star1").removeEventListener("mouseout", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseout", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseout", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseout", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseout", mouseout5);
+            
+            document.getElementById("star1").removeEventListener("mouseover", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseover", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseover", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseover", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseover", mouseout5);
+        });
+        document.getElementById("star3").addEventListener("click", function(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="3分";
+            document.getElementById("star1").removeEventListener("mouseout", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseout", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseout", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseout", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseout", mouseout5);
+            
+            document.getElementById("star1").removeEventListener("mouseover", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseover", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseover", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseover", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseover", mouseout5);
+        });
+        document.getElementById("star4").addEventListener("click", function(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("star4").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="4分";
+            document.getElementById("star1").removeEventListener("mouseout", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseout", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseout", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseout", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseout", mouseout5);
+            
+            document.getElementById("star1").removeEventListener("mouseover", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseover", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseover", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseover", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseover", mouseout5);
+        });
+        document.getElementById("star5").addEventListener("click", function(){
+            document.getElementById("star1").src = "images/chngstar.gif";
+            document.getElementById("star2").src = "images/chngstar.gif";
+            document.getElementById("star3").src = "images/chngstar.gif";
+            document.getElementById("star4").src = "images/chngstar.gif";
+            document.getElementById("star5").src = "images/chngstar.gif";
+            document.getElementById("mark").innerHTML="5分";
+            document.getElementById("star1").removeEventListener("mouseout", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseout", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseout", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseout", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseout", mouseout5);
+            
+            document.getElementById("star1").removeEventListener("mouseover", mouseout1);
+            document.getElementById("star2").removeEventListener("mouseover", mouseout2);
+            document.getElementById("star3").removeEventListener("mouseover", mouseout3);
+            document.getElementById("star4").removeEventListener("mouseover", mouseout4);
+            document.getElementById("star5").removeEventListener("mouseover", mouseout5);
+        });
+    </script>
+</body>
+
+</html>

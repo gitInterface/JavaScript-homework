@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON資料</title>
+    <script src="/taiwan_districts.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    nav {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        /* padding-left: 200px; */
+    }
+
+    li {
+        display: inline-block;
+        /* float: left; */
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    .active {
+        background-color: orange;
+    }
+
+    .select {
+        text-align: center;
+    }
+
+    select {
+        width: 100px;
+    }
+
+    table{
+        border:1px solid black;
+        border-spacing: 0;
+        text-align: center;
+        margin: auto;
+    }
+
+    td{
+        border:1px solid black;
+        padding: 15px;
+    }
+</style>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="homework01.html">HW1</a></li>
+            <li><a href="homework02.html">HW2</a></li>
+            <li><a href="homework03.html">HW3</a></li>
+            <li><a href="homework04.html">HW4</a></li>
+            <li><a href="homework05.html">HW5</a></li>
+            <li><a class="active" href="homework06.html">HW6</a></li>
+        </ul>
+    </nav>
+    <br>
+    <div class="select">
+        <select id="city"></select>
+        <select id="district"></select>
+    </div>
+    <br>
+    <div class="result">
+        <table id="table">
+        </table>
+    </div>
+    <script>
+        let city = document.getElementById("city");
+        for (let i = 0; i < data.length; i++) {
+            city.innerHTML += "<option>" + data[i].name + "</option>";
+        }
+        document.getElementById("city").addEventListener("change", chooseDistrict);
+        document.getElementById("district").addEventListener("change", chooseTable);
+
+        function chooseDistrict() {
+            let choose = document.getElementById("city").value;
+            let district = document.getElementById("district");
+            district.innerHTML = "";
+            for(let i=0; i<data.length; i++){
+                if(choose == data[i].name){
+                    for(let j = 0; j < data[i].districts.length; j++){
+                        district.innerHTML += "<option>" + data[i].districts[j].name + "</option>";
+                    }
+                    displayTable(i);
+                }
+            }
+        }
+
+        function displayTable(city){
+            let table = document.getElementById("table");
+            table.innerHTML = "";
+            for(let i=0; i<data[city].districts.length; i++){
+                table.appendChild(document.createElement("tr"));
+                let temp1 = document.createElement("td");
+                temp1.innerHTML = data[city].districts[i].zip;
+                temp1.setAttribute("id",data[city].districts[i].zip);
+                table.appendChild(temp1);
+                let temp2 = document.createElement("td");
+                temp2.innerHTML = data[city].districts[i].name;
+                temp2.setAttribute("id",data[city].districts[i].name);
+                table.appendChild(temp2);
+            }
+        }
+
+        function chooseTable(){
+            // let td = document.getElementsByTagName("td");
+            // td.setAttribute("style","background-color:white");
+            let city = document.getElementById("city").value;
+            let district = document.getElementById("district").value;
+            let choose = document.getElementById(district);
+            choose.setAttribute("style","background-color:orange");
+            for(let i = 0; i<data.length; i++){
+                if(city == data[i].name){
+                    for(let j = 0; j<data[i].districts.length; j++){
+                        if(district == data[i].districts[j].name){
+                            let set = document.getElementById(data[i].districts[j].zip);
+                            set.setAttribute("style","background-color:orange");
+                        }
+                    }
+                }
+            }
+        }
+        
+
+    </script>
+</body>
+
+</html>

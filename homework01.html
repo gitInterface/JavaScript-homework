@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九乘法表</title>
+    <style>
+        body {
+        margin: 0;
+    }
+
+    nav{
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        /* padding-left: 200px; */
+    }
+
+    li {
+        display: inline-block;
+        /* float: left; */
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    .active {
+        background-color: orange;
+    }
+
+        table {
+            border: 1px solid red;
+            background-color: rgb(202, 245, 245);
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        td {
+            border-right: 1px solid red;
+            border-left: 1px solid red;
+            padding: 10px;
+        }
+
+        tr :nth-child(2n) {
+            background-color: rgb(250, 193, 94);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a class="active" href="homework01.html">HW1</a></li>
+            <li><a href="homework02.html">HW2</a></li>
+            <li><a href="homework03.html">HW3</a></li>
+            <li><a href="homework04.html">HW4</a></li>
+            <li><a href="homework05.html">HW5</a></li>
+            <li><a href="homework06.html">HW6</a></li>
+        </ul>
+    </nav>
+    <br>
+    <script>
+        document.write("<table>");
+        for (let i = 1; i <= 9; i++) {
+            document.write("<tr>");
+            for (let j = 2; j <= 9; j++) {
+                document.write("<td>" + j + "x" + i + "=" + (j * i) + "</td>")
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</body>
+
+</html>
