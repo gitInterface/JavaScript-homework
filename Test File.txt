@@ -2,3 +2,5 @@ This is just a test file.
 dev branch modify the file.
 I add another line one this.
 This is master branch modify.
+
+Look here! master branch conflict.
